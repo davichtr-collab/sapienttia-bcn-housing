@@ -650,34 +650,35 @@ def main():
             """.replace(',', '.'))
     
     # COLUMNA DE IA Y OBSERVACIONES
-        with col_ia:
-               st.markdown("## 🎓 El Consejo de Sabios")
-            
-               # Botón de análisis IA
-               if ai_disponible:
-                   if st.button("🧠 Generar Análisis con IA", use_container_width=True, type="primary"):
-                       with st.spinner("🤖 Consultando modelos económicos y datos históricos..."):
-                           # Hash para caché por usuario
-                           api_hash = hashlib.md5(str(get_api_key()).encode()).hexdigest()[:8]
-                        
-                        # AQUÍ ESTABA EL ERROR (Faltaban los argumentos y cerrar paréntesis)
-                           analisis = generar_analisis_ia(
-                               metricas, 
-                               pisos_turisticos_eliminar, 
-                               tope_alquiler, 
-                               inversion_publica, 
-                               api_hash
-                           )
-                       st.markdown(f'<div class="ia-analysis">{analisis}</div>', unsafe_allow_html=True)
-                       else:
-                       st.info("💡 Usa el panel lateral para configurar las políticas y ver el impacto.")
-    
-               # Observaciones automáticas (siempre visibles)
-               with col_ia:
-                st.markdown("### 📝 Notas del Observatorio")
-                observaciones = generar_observaciones_auto(metricas, config_actual)
-                for obs in observaciones:
-                    st.markdown(f'<div class="observation-box">{obs}</div>', unsafe_allow_html=True)
-    
-    if __name__ == "__main__":
-    main()   
+# COLUMNA DE IA Y OBSERVACIONES (Debe tener 4 espacios de margen)
+    with col_ia:
+        st.markdown("## 🎓 El Consejo de Sabios")
+        
+        # Botón de análisis IA
+        if ai_disponible:
+            if st.button("🧠 Generar Análisis con IA", use_container_width=True, type="primary"):
+                with st.spinner("🤖 Consultando modelos económicos y datos históricos..."):
+                    # Hash para caché por usuario
+                    api_hash = hashlib.md5(str(get_api_key()).encode()).hexdigest()[:8]
+                    
+                    analisis = generar_analisis_ia(
+                        metricas, 
+                        pisos_turisticos_eliminar, 
+                        tope_alquiler, 
+                        inversion_publica, 
+                        api_hash
+                    )
+                    st.markdown(f'<div class="ia-analysis">{analisis}</div>', unsafe_allow_html=True)
+        else:
+            st.info("💡 Usa el panel lateral para configurar las políticas y ver el impacto.")
+
+    # Observaciones automáticas (siempre visibles)
+    with col_ia:
+        st.markdown("### 📝 Notas del Observatorio")
+        observaciones = generar_observaciones_auto(metricas, config_actual)
+        for obs in observaciones:
+            st.markdown(f'<div class="observation-box">{obs}</div>', unsafe_allow_html=True)
+
+# Esto va pegado al borde izquierdo (0 espacios)
+if __name__ == "__main__":
+    main()
