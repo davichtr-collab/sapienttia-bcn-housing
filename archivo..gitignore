@@ -1,0 +1,49 @@
+# API Keys y secrets
+.streamlit/secrets.toml
+*.env
+.env.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/config.toml
+```
+
+---
+
+## 📁 **Estructura del Proyecto en GitHub**
+```
+sapienttia/
+│
+├── sapienttia_app.py          # Código principal (el tuyo, pero limpio)
+├── requirements.txt            # Dependencias
+├── README.md                   # Documentación
+├── .gitignore                  # Archivos a ignorar
+├── LICENSE                     # Licencia (opcional)
+│
+├── .streamlit/                 # Configuración (opcional)
+│   └── secrets.toml.example   # Ejemplo de secrets (sin tu key)
+│
+└── assets/                     # Imágenes para README (opcional)
+    └── screenshot.png
