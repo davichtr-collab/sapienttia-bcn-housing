@@ -669,4 +669,15 @@ def main():
                         api_hash
                     )
                     st.markdown(f'<div class="ia-analysis">{analisis}</div>', unsafe_allow_html=True)
-                
+             else:
+            st.info("💡 Usa el panel lateral para configurar las políticas y ver el impacto.")
+
+    # Observaciones automáticas (siempre visibles)
+    with col_ia:
+        st.markdown("### 📝 Notas del Observatorio")
+        observaciones = generar_observaciones_auto(metricas, config_actual)
+        for obs in observaciones:
+            st.markdown(f'<div class="observation-box">{obs}</div>', unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    main()   
