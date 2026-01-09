@@ -660,5 +660,13 @@ def main():
                     # Hash para caché por usuario
                     api_hash = hashlib.md5(str(get_api_key()).encode()).hexdigest()[:8]
                     
+                    # AQUÍ ESTABA EL ERROR (Faltaban los argumentos y cerrar paréntesis)
                     analisis = generar_analisis_ia(
+                        metricas, 
+                        pisos_turisticos_eliminar, 
+                        tope_alquiler, 
+                        inversion_publica, 
+                        api_hash
+                    )
+                    st.markdown(f'<div class="ia-analysis">{analisis}</div>', unsafe_allow_html=True)
                 
